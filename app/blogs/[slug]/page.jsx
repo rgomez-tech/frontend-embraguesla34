@@ -1,31 +1,5 @@
 import React from 'react';
 import './post.css';
-import { getPageSEO } from "@/lib/seo";
-
-export async function generateMetadata({ params }) {
-  const seo = await getPageSEO(`/${params.slug}`);
-
-  if (!seo) return {};
-
-  return {
-    title: seo.title,
-    description: seo.metaDesc,
-    alternates: {
-      canonical: seo.canonical,
-    },
-    openGraph: {
-      title: seo.opengraphTitle,
-      description: seo.opengraphDescription,
-      images: seo.opengraphImage
-        ? [{ url: seo.opengraphImage.sourceUrl }]
-        : [],
-    },
-    robots: {
-      index: seo.robots?.index === "index",
-      follow: seo.robots?.follow === "follow",
-    },
-  };
-}
 
 
 async function fetchPostBySlug(slug) {

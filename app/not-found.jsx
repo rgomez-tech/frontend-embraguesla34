@@ -1,8 +1,3 @@
-export const metadata = {
-  title: "Página no encontrada",
-  description: "El contenido que buscas no existe",
-};
-
 export default function NotFound() {
   return (
     <section style={{ padding: "4rem", textAlign: "center" }}>
