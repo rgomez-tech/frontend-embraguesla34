@@ -1,14 +1,5 @@
 import "./servicios.css";
 
-export async function generateMetadata() {
-  const seo = await getPageSEO("/servicios");
-
-  return {
-    title: seo?.title,
-    description: seo?.metaDesc,
-  };
-}
-
 
 export default function ServiciosPage() {
   return (
