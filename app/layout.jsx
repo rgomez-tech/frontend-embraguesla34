@@ -1,43 +1,25 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { getMenu } from "../lib/getMenu";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
-import Script from "next/script";
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export default async function RootLayout({ children }) {
-  const menu = await getMenu();
+  let menu = null;
 
-  const items = menu.menuItems.nodes.map(item => ({
-  ...item,
-  url: item.url.replace("https://tech.embraguesla34.com/", "")
-}));
-
-
+  try {
+    menu = await getMenu();
+  } catch {}
 
   return (
     <html lang="es">
       <body>
-        <Script src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js" type="module" strategy="afterInteractive"/>
-        {menu && menu.menuItems && (() => {
-          const items = menu.menuItems.nodes.map(item => ({
-            ...item,
-            url: item.url.replace("https://tech.embraguesla34.com/", "")
-          }));
-
-          return <Menu items={items} />;
-        })()}
+        {menu?.menuItems?.nodes && (
+          <Menu
+            items={menu.menuItems.nodes.map(item => ({
+              ...item,
+              url: item.url.replace("https://tech.embraguesla34.com/", "")
+            }))}
+          />
+        )}
 
         <main>{children}</main>
         <Footer />
@@ -45,4 +27,5 @@ export default async function RootLayout({ children }) {
     </html>
   );
 }
+
 

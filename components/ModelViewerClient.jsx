@@ -1,20 +1,13 @@
 "use client";
+import Script from "next/script";
 
-import dynamic from "next/dynamic";
-
-const ModelViewer = dynamic(
-  async () => {
-    await import("@google/model-viewer");
-    return () => null;
-  },
-  { ssr: false }
-);
-
-export default function ModelViewerClient({ children }) {
+export default function ModelViewerScript() {
   return (
-    <>
-      <ModelViewer />
-      {children}
-    </>
+    <Script
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+      type="module"
+      strategy="afterInteractive"
+    />
   );
 }
+
