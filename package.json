@@ -9,6 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@apollo/client": "^4.0.9",
+    "@google/model-viewer": "^4.1.0",
+    "cross-fetch": "^4.1.0",
+    "graphql": "^16.12.0",
     "next": "16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0"

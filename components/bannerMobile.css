@@ -1,0 +1,48 @@
+.banner-mobile {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.banner-mobile__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-mobile__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3); /* opcional */
+}
+
+.banner-mobile__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  color: #fff;
+}
+
+.banner-mobile__content h1 {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: -10px;
+  text-shadow: 2px 2px 1px black;
+}
+.banner-mobile__content h2 {
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 2px 2px 1px black;
+  margin-bottom: 10px;
+}
+.banner-mobile__content p {
+  font-size: 26px;
+}
+
+

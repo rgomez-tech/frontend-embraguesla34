@@ -1,0 +1,233 @@
+.servicios {
+  width: 100%;
+  padding: 60px 0px;  
+}
+
+.servicios__title {
+  text-align: center;
+  font-size: 70px;
+  margin-bottom: 40px;
+  margin-top: 80px;
+}
+
+.servicios__grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1320px;
+  margin: auto;  
+}
+
+.servicios__box {
+  display: flex;
+  width: 100%;
+  background: lightgrey;
+  border-radius: 30px;
+  box-shadow: 0px 2px 4px gray;
+}
+
+.servicios__box2 {
+  display: flex;
+  width: 100%;
+  background: lightgrey;
+  border-radius: 30px;
+  box-shadow: 0px 2px 4px gray;
+}
+
+.cont-img1{
+    width: 50%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;    
+}
+
+.cont-img1 img{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 100% !important;
+    margin-bottom: -4px;
+}
+
+.cont-img2{
+    width: 50%;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;    
+}
+
+.cont-img2 img{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    width: 100% !important;
+    margin-bottom: -4px;
+}
+
+.cont-text{
+    width: 50%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cont-text h2{
+    font-size: 60px;
+    line-height: 64px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.cont-text hr{
+  width: 300px;
+  height: 2px;
+  background-color: #c00000;
+  border-color: #c00000;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+.domicilio{
+    background-color: #00011e;
+    padding: 20px 0px;
+    width: 100%;
+    overflow-x: hidden;
+    margin-top: 80px;
+}
+
+.slide-in {
+    display: flex;
+    white-space: nowrap;
+    animation: slideLoop 10s linear infinite;
+}
+
+.slide-in img {
+    width: 150px;
+    height: auto;
+    margin-left: 40px;
+}
+
+.slide-in-text {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    margin-top: 10px;
+}
+
+@keyframes slideLoop {
+    0% {
+    transform: translateX(100%);
+    opacity: 0;
+    }
+    10% {
+    opacity: 1;
+    }
+    90% {
+    opacity: 1;
+    }
+    100% {
+    transform: translateX(-100%);
+    opacity: 0;
+    }
+}
+
+.productos {
+  max-width: 1320px;
+  margin: auto;  
+}
+.productos h2{
+    text-align: center;
+}
+
+.tipo-producto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px; 
+  justify-content: space-between;
+}
+
+.tipo-producto img{
+    width: 150px;
+}
+
+
+@media (max-width: 768px) {
+    .servicios{
+        padding: 30px 0px;
+    }
+    .servicios__grid {
+        flex-direction: column;
+        padding: 0px 10px;
+    }
+    .servicios__box {
+        display: flex;
+        flex-direction: column;
+    }
+    .servicios__box2 {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .cont-img1{
+        width: 100%;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;    
+    }
+
+    .cont-img1 img{
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0px;
+        width: 100% !important;
+        margin-bottom: -4px;
+    }
+
+    .cont-img2{
+        width: 100%;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;    
+    }
+
+    .cont-img2 img{
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 0px;
+        width: 100% !important;
+        margin-bottom: -4px;
+    }
+    .cont-text{
+        width: 95%;
+        padding: 20px;
+    }
+    .cont-text h2{
+        font-size: 40px;
+        line-height: 44px;
+    }
+    .cont-text hr{
+         width: 150px;
+    }
+    .slide-in {
+        display: flex;
+        white-space: nowrap;
+        animation: slideLoop 5s linear infinite;
+    }
+    @keyframes slideLoop {
+        0% {
+        transform: translateX(100%);
+        opacity: 0;
+        }
+        10% {
+        opacity: 1;
+        }
+        90% {
+        opacity: 1;
+        }
+        100% {
+        transform: translateX(-250%);
+        opacity: 0;
+        }
+    }
+    .productos h2{
+        font-size: 38px;
+    }    
+    .tipo-producto{
+        padding: 30px;
+    }   
+}

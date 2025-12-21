@@ -1,0 +1,115 @@
+.ubicacion{
+  display: block;
+  width: 100%;
+  height: 800px;
+  background-image: url("/img/equipo-embraguesla34.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.ubi-contentenido{
+  width: 100%;
+  height: 800px;
+  background: rgba(1, 0, 22, 0.7);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ubi-contentenido h2{
+  text-shadow: 2px 2px 1px black;
+  border-bottom: 2px solid #c00000;
+  padding-bottom: 10px;
+}
+
+
+/*  FOOTER  */
+.footer {
+  background: #00011e;
+  color: #fff;
+  padding-bottom: 20px;
+}
+
+/* Fila superior */
+.footer__top {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 25px;
+}
+
+.footer__col1 {
+  width: 40%;
+}
+
+.footer__col2 {
+  width: 30%;
+}
+
+.footer__logo {
+  width: 60%;
+  height: auto;
+  display: block;
+  margin: 40px auto;
+}
+
+/* Texto */
+.footer__col2 h3 {
+  font-size: 34px;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px gray;
+}
+.footer__col2 p {
+  color: #f5f5f5;
+  font-size: 22px;
+  line-height: 30px;
+}
+.footer__col2 hr{
+  width: 200px;
+  height: 2px;
+  background-color: #c00000;
+  border-color: #c00000;
+  margin-left: 0;
+  margin-top: -20px;
+}
+
+/* Fila inferior */
+.footer__bottom {
+  text-align: center;
+  padding-top: 10px;
+  border-top: 3px solid #c00000;
+  font-size: 18px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .footer__top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__logo {
+    width: 80%;
+    margin: 20px auto;
+  }
+  .footer__col1 {
+    width: 100%;
+  }
+  .footer__col2 {
+    width: 100%;
+  }
+  .footer__col2 hr{
+    margin: -20px auto;
+  }
+
+  .ubicacion-mobile{
+    display: block;
+    width: 100%;
+    height: 800px;
+    background-image: url("/img/equipo-embraguesla34-mobile.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+}
