@@ -3,16 +3,6 @@
 import { useState } from "react";
 import "./contacto.css";
 
-export async function generateMetadata() {
-  const seo = await getPageSEO("/contacto");
-
-  return {
-    title: seo?.title,
-    description: seo?.metaDesc,
-  };
-}
-
-
 
 export default function ContactForm() {
   const [form, setForm] = useState({
