@@ -1,6 +1,6 @@
 "use client";
 
-import ModelViewerScript from "@/components/ModelViewerClient";
+import ModelViewer from "@/components/ModelViewerClient";
 import "./Model3DViewer.css";
 
 export default function SectionModelos3D() {
@@ -15,7 +15,7 @@ export default function SectionModelos3D() {
             una transmisión eficiente del torque.</p>
         </div>
         <div className="column">
-          <model-viewer
+          <ModelViewer
             src="/model3d/clutch_prensa.glb"
             auto-rotate
             camera-controls
@@ -29,7 +29,7 @@ export default function SectionModelos3D() {
       </div>
       <div className="two-cols">
         <div className="column">
-          <model-viewer
+          <ModelViewer
             src="/model3d/clutch_disco.glb"
             auto-rotate
             camera-controls
