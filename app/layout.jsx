@@ -6,21 +6,18 @@ import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
 export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }) {
-  let menu = null;
+  let items = [];
 
   try {
-    menu = await getMenu();
+    const menuItems = await getMenu();
+
+    items = menuItems.map(item => ({
+      ...item,
+      url: item.url.replace("https://tech.embraguesla34.com", "")
+    }));
   } catch (err) {
     console.error("Error fetching menu:", err);
   }
-
-  const items =
-    menu?.menuItems?.nodes?.map(item => ({
-      ...item,
-      url: item.url.replace("https://tech.embraguesla34.com", "")
-    })) || [];
-
-
 
   return (
     <html lang="es">
@@ -28,8 +25,10 @@ export default async function RootLayout({ children }) {
         {items.length > 0 ? (
           <Menu items={items} />
         ) : (
-          <p style={{ textAlign: "center" }}>Menú no disponible</p>
-        )} 
+          <p style={{ textAlign: "center", margin: "1rem 0" }}>
+            Menú no disponible en esta web
+          </p>
+        )}
 
         <main>{children}</main>
         <Footer />
@@ -37,6 +36,7 @@ export default async function RootLayout({ children }) {
     </html>
   );
 }
+
 
 
 
