@@ -44,7 +44,7 @@ export default function ServiciosPage() {
       <section className="domicilio">
         <div className="slide-in">   
           <div className="slide-in-text">Servicio a domicilio en la ciudad de Cali</div>
-          <img src="/img/furgoneta.webp" width="150px" height="150px"/>
+          <img src="/img/Furgoneta.webp" width="150px" height="150px"/>
         </div>
       </section>
 
