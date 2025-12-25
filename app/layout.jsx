@@ -17,20 +17,14 @@ export default async function RootLayout({ children }) {
     url: item.url.replace("https://tech.embraguesla34.com", "")
   }));
 
-  {items.length > 0 && <Menu items={items} />}
+
 
 
 
   return (
     <html lang="es">
       <body>
-        {items.length > 0 ? (
-          <Menu items={items} />
-        ) : (
-          <p style={{ textAlign: "center", margin: "1rem 0" }}>
-            Menú no disponible en esta web
-          </p>
-        )}
+        {items.length > 0 && <Menu items={items} />}  
 
         <main>{children}</main>
         <Footer />
