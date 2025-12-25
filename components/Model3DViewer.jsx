@@ -15,13 +15,13 @@ export default function SectionModelos3D() {
             una transmisión eficiente del torque.</p>
         </div>
         <div className="column">
-          <ModelViewerScript
+          <model-viewer
             src="/model3d/clutch_prensa.glb"
             auto-rotate
             camera-controls
             loading="lazy"
             exposure="1.2"
-            class="modelo-3d"
+            className="modelo-3d"
             ar
           />
           <p>Interactúa con el modelo 3D</p>
@@ -29,13 +29,13 @@ export default function SectionModelos3D() {
       </div>
       <div className="two-cols">
         <div className="column">
-          <ModelViewerScript
+          <model-viewer
             src="/model3d/clutch_disco.glb"
             auto-rotate
             camera-controls
             loading="lazy"
             exposure="1.2"
-            class="modelo-3d"
+            className="modelo-3d"
             ar
           />
           <p>Interactúa con el modelo 3D</p>

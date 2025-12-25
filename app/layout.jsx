@@ -3,6 +3,15 @@ import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
 
+import Script from "next/script";
+
+<Script
+  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+  type="module"
+  strategy="afterInteractive"
+/>
+
+
 export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }) {

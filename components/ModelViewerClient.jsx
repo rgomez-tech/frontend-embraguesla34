@@ -1,13 +1,16 @@
 "use client";
-import Script from "next/script";
+import { useEffect, useState } from "react";
 
-export default function ModelViewerScript() {
-  return (
-    <Script
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-      type="module"
-      strategy="afterInteractive"
-    />
-  );
+export default function ModelViewer(props) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
+  return <model-viewer {...props}></model-viewer>;
 }
+
 
