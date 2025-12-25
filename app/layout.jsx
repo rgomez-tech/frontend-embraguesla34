@@ -14,11 +14,11 @@ export default async function RootLayout({ children }) {
     console.error("Error fetching menu:", err);
   }
 
-  const items =
-    menu?.menuItems?.nodes?.map(item => ({
-      ...item,
-      url: item.url.replace("https://tech.embraguesla34.com", "")
-    })) || [];
+  const items = menu.map(item => ({
+    ...item,
+    url: item.url.replace("https://tech.embraguesla34.com", "")
+  }));
+
 
 
   return (
