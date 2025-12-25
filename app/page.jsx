@@ -3,6 +3,7 @@ import Slider from "@/components/Slider";
 import BannerMobile from "@/components/BannerMobile";
 import SectionQuienesSomos from "@/components/SectionQuienesSomos";
 import SectionModelos3D from "@/components/Model3DViewer";
+import ModelViewerScript from "@/components/ModelViewerScript";
 
 export default function Page() {
   return (
@@ -18,6 +19,7 @@ export default function Page() {
         <SectionQuienesSomos />
       </div>
       <div>
+        <ModelViewerScript />
         <SectionModelos3D />
       </div>
     </>

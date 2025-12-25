@@ -2,14 +2,7 @@ import "./globals.css";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
-import ModelViewer from "@/components/ModelViewerClient";
-import Script from "next/script";
 
-<Script
-  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-  type="module"
-  strategy="beforeInteractive"
-/>
 
 
 export const dynamic = "force-dynamic";
@@ -31,7 +24,6 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
-        <ModelViewer />
         {items.length > 0 ? (
           <Menu items={items} />
         ) : (
