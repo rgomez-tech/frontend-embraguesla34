@@ -15,7 +15,7 @@ export default function SectionModelos3D() {
             una transmisión eficiente del torque.</p>
         </div>
         <div className="column">
-          <ModelViewer-X
+          <ModelViewer
             src="/model3d/clutch_prensa.glb"
             auto-rotate
             camera-controls
@@ -29,7 +29,7 @@ export default function SectionModelos3D() {
       </div>
       <div className="two-cols">
         <div className="column">
-          <ModelViewer-X
+          <ModelViewer
             src="/model3d/clutch_disco.glb"
             auto-rotate
             camera-controls

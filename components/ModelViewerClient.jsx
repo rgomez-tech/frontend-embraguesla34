@@ -10,7 +10,7 @@ export default function ModelViewer(props) {
 
   if (!mounted) return null;
 
-  return <ModelViewer-X {...props}></ModelViewer-X>;
+  return <ModelViewer {...props}></ModelViewer>;
 }
 
 
