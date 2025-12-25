@@ -11,6 +11,7 @@ export default async function RootLayout({ children }) {
   } catch (err) {
     console.error("Error fetching menu:", err);
   }
+console.log(menu.menuItems.nodes);
 
   // Extraemos items seguros para pasar al componente
   const items = menu?.menuItems?.nodes?.map(item => ({
@@ -25,7 +26,7 @@ export default async function RootLayout({ children }) {
           <Menu items={items} />
         ) : (
           <p style={{ textAlign: "center", margin: "1rem 0" }}>
-            Menú no disponible
+            Menú no disponible en esta web
           </p>
         )}
 
