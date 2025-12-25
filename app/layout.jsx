@@ -3,6 +3,8 @@ import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
 
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({ children }) {
   let menu = null;
 
@@ -12,13 +14,11 @@ export default async function RootLayout({ children }) {
     console.error("Error fetching menu:", err);
   }
 
-  const items = menu.map(item => ({
-    ...item,
-    url: item.url.replace("https://tech.embraguesla34.com", "")
-  }));
-
-
-
+  const items =
+    menu?.menuItems?.nodes?.map(item => ({
+      ...item,
+      url: item.url.replace("https://tech.embraguesla34.com", "")
+    })) || [];
 
 
   return (
