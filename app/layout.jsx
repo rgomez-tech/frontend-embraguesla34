@@ -31,6 +31,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
+        <ModelViewer />
         {items.length > 0 ? (
           <Menu items={items} />
         ) : (
