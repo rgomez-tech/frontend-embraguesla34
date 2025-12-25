@@ -11,13 +11,15 @@ export default async function RootLayout({ children }) {
   } catch (err) {
     console.error("Error fetching menu:", err);
   }
-console.log(menu.menuItems.nodes);
 
-  // Extraemos items seguros para pasar al componente
-  const items = menu?.menuItems?.nodes?.map(item => ({
+  const items = menu.map(item => ({
     ...item,
-    url: item.url.replace("https://tech.embraguesla34.com/", "")
-  })) || []; // fallback a array vacío
+    url: item.url.replace("https://tech.embraguesla34.com", "")
+  }));
+
+  {items.length > 0 && <Menu items={items} />}
+
+
 
   return (
     <html lang="es">
