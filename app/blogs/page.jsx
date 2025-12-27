@@ -10,17 +10,16 @@ async function fetchPosts() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       query: `
-        query AllPosts {
-          posts(first: 10) {
-            nodes {
-              title
-              slug
-              excerpt
-              featuredImage {
-                node {
-                  sourceUrl
-                  altText
-                }
+        AllPosts {
+          nodes {
+            title
+            slug
+            uri
+            excerpt
+            featuredImage {
+              node {
+                sourceUrl
+                altText
               }
             }
           }
@@ -45,7 +44,7 @@ export default async function BlogsPage() {
       <h1 className="blogs-title">Información de interés</h1>
       <div className="blogs-grid">
         {posts.map(post => (
-          <Link key={post.slug} href={`/blogs/${post.slug}`} className="blog-card">
+          <Link key={post.uri} href={post.uri} className="blog-card">
             {post.featuredImage?.node && (
               <img
                 src={post.featuredImage.node.sourceUrl}
