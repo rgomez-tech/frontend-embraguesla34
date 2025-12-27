@@ -49,6 +49,7 @@ export default async function RootLayout({ children }) {
             `,
           }}
         />
+        <meta name="facebook-domain-verification" content="3miemlvu0q8pad6c7dej2zb32b9gop" />
       </head>
       <body>
         <MetaPixel />
