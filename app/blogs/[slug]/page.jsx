@@ -1,15 +1,39 @@
 import React from 'react';
 import './post.css';
+import { getPostSEO } from "@/lib/getPostSEO";
 
 export async function generateMetadata({ params }) {
+  const post = await getPostSEO(params.slug);
+  const seo = post.seo;
+
+  const ogImage =
+    seo.opengraphImage?.sourceUrl ||
+    post.featuredImage?.node?.sourceUrl;
+
   return {
-    title: post.title,
-    description: post.excerpt,
+    title: seo.title || post.title,
+    description: seo.metaDesc,
     alternates: {
-      canonical: `/blogs/${params.slug}`,
+      canonical: seo.canonical,
+    },
+    openGraph: {
+      title: seo.opengraphTitle || seo.title,
+      description: seo.opengraphDescription || seo.metaDesc,
+      url: seo.canonical,
+      siteName: seo.opengraphSiteName || "Embragues La 34",
+      type: "article",
+      publishedTime: seo.opengraphPublishedTime,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }
+
 
 
 
