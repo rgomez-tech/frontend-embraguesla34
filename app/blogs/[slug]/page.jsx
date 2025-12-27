@@ -40,14 +40,16 @@ export async function generateMetadata({ params }) {
 
 
 async function fetchPostBySlug(slug) {
+  const uri = `/blog/${slug}/`; // 👈 CLAVE
+
   try {
-    const res = await fetch("https://tech.embraguesla34.com/graphql", {
+    const res = await fetch(process.env.WP_GRAPHQL_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         query: `
-          query PostBySlug($slug: ID!) {
-            post(id: $slug, idType: SLUG) {
+          query PostByUri($uri: ID!) {
+            post(id: $uri, idType: URI) {
               title
               content
               date
@@ -65,7 +67,7 @@ async function fetchPostBySlug(slug) {
             }
           }
         `,
-        variables: { slug },
+        variables: { uri },
       }),
       next: { revalidate: 60 },
     });
@@ -73,15 +75,10 @@ async function fetchPostBySlug(slug) {
     if (!res.ok) return null;
 
     const json = await res.json();
-
-    if (json.errors) {
-      console.error("GraphQL errors:", json.errors);
-      return null;
-    }
+    if (json.errors) return null;
 
     return json?.data?.post || null;
-  } catch (error) {
-    console.error("Fetch post failed:", error);
+  } catch {
     return null;
   }
 }
