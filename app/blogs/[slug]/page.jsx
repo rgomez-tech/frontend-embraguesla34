@@ -1,6 +1,17 @@
 import React from 'react';
 import './post.css';
 
+export async function generateMetadata({ params }) {
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/blogs/${params.slug}`,
+    },
+  };
+}
+
+
 
 async function fetchPostBySlug(slug) {
   const res = await fetch('https://tech.embraguesla34.com/graphql', {

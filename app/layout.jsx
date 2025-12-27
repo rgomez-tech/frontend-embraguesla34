@@ -3,6 +3,9 @@ import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
 
+export const metadata = {
+  metadataBase: new URL("https://www.embraguesla34.com"),
+};
 
 
 export const dynamic = "force-dynamic";
