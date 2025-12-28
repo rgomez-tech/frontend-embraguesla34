@@ -94,7 +94,7 @@ async function fetchPostBySlug(slug) {
 
 
 export default async function BlogPostPage({ params }) {
-  const { slug } = params;
+  const slug = params?.slug;
 
   const post = await fetchPostBySlug(slug);
 
