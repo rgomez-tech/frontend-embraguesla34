@@ -87,7 +87,7 @@ async function fetchPostBySlug(slug) {
 export default async function BlogPostPage({ params }) {
   const { slug } = params;
 
-  const post = await fetchPostBySlug(slug);
+  const post2 = await fetchPostBySlug(slug);
 
   if (!post) {
     return <p>Artículo no encontrado</p>;
@@ -95,22 +95,22 @@ export default async function BlogPostPage({ params }) {
 
   return (
     <article>
-      <h1>{post.title}</h1>
+      <h1>{post2.title}</h1>
 
-      {post.featuredImage?.node && (
+      {post2.featuredImage?.node && (
         <img
-          src={post.featuredImage.node.sourceUrl}
-          alt={post.featuredImage.node.altText}
+          src={post2.featuredImage.node.sourceUrl}
+          alt={post2.featuredImage.node.altText}
         />
       )}
 
       <div
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: post2.content }}
       />
 
       <p>
-        Publicado por {post.author.node.name} —{" "}
-        {new Date(post.date).toLocaleDateString()}
+        Publicado por {post2.author.node.name} —{" "}
+        {new Date(post2.date).toLocaleDateString()}
       </p>
     </article>
   );
