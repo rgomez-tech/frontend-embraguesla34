@@ -3,9 +3,18 @@ import './post.css';
 import { getPostSEO } from "@/lib/getPostSEO";
 
 export async function generateMetadata({ params }) {
-  const post = await getPostSEO(params.slug);
+  const slug = params?.slug;
 
-  if (!post) {
+  if (!slug) {
+    return {
+      title: "Artículo no encontrado",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const postSEO = await getPostSEO(params.slug);
+
+  if (!postSEO) {
     return {
       title: "Artículo no encontrado",
       description: "El contenido no está disponible",
@@ -16,16 +25,16 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const seo = post.seo || {};
+  const seo = postSEO.seo || {};
 
   return {
-    title: seo.title || post.title,
+    title: seo.title || postSEO.title,
     description: seo.metaDesc || "",
     alternates: {
       canonical: seo.canonical,
     },
     openGraph: {
-      title: seo.opengraphTitle || post.title,
+      title: seo.opengraphTitle || postSEO.title,
       description: seo.opengraphDescription || "",
       url: seo.canonical,
       type: "article",
@@ -42,7 +51,7 @@ export async function generateMetadata({ params }) {
 async function fetchPostBySlug(slug) {
   if (!slug) return null;
 
-  const res = await fetch('https://tech.embraguesla34.com/graphql', {
+  const res = await fetch(process.env.WP_GRAPHQL_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -87,30 +96,31 @@ async function fetchPostBySlug(slug) {
 export default async function BlogPostPage({ params }) {
   const { slug } = params;
 
-  const post2 = await fetchPostBySlug(slug);
+  const post = await fetchPostBySlug(slug);
 
-  if (!post2) {
+  if (!post) {
     return <p>Artículo no encontrado</p>;
   }
 
   return (
     <article>
-      <h1>{post2.title}</h1>
+      <h1>{post.title}</h1>
 
-      {post2.featuredImage?.node && (
+      {post.featuredImage?.node && (
         <img
-          src={post2.featuredImage.node.sourceUrl}
-          alt={post2.featuredImage.node.altText}
+          src={post.featuredImage.node.sourceUrl}
+          alt={post.featuredImage.node.altText}
         />
       )}
 
       <div
-        dangerouslySetInnerHTML={{ __html: post2.content }}
+        dangerouslySetInnerHTML={{ __html: post.content }}
       />
 
       <p>
-        Publicado por {post2.author.node.name} —{" "}
-        {new Date(post2.date).toLocaleDateString()}
+        Publicado por{" "}
+        {post.author?.node?.name || "Embragues La 34"} —{" "}
+        {new Date(post.date).toLocaleDateString()}
       </p>
     </article>
   );
