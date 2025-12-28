@@ -98,6 +98,9 @@ export default async function BlogPostPage({ params }) {
 
   const post = await fetchPostBySlug(slug);
 
+  console.log("Slug recibido:", slug);
+  console.log("Post recibido:", post);
+
   if (!post) {
     return <p>Artículo no encontrado</p>;
   }
