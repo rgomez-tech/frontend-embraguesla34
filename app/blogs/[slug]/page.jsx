@@ -89,7 +89,7 @@ export default async function BlogPostPage({ params }) {
 
   const post2 = await fetchPostBySlug(slug);
 
-  if (!post) {
+  if (!post2) {
     return <p>Artículo no encontrado</p>;
   }
 
