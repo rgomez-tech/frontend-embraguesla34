@@ -44,7 +44,11 @@ export default async function BlogsPage() {
       <h1 className="blogs-title">Información de interés</h1>
       <div className="blogs-grid">
         {posts.map(post => (
-          <Link key={post.uri} href={post.uri} className="blog-card">
+          <Link
+            key={post.slug}
+            href={`/blogs/${post.slug}`}
+            className="blog-card"
+          >
             {post.featuredImage?.node && (
               <img
                 src={post.featuredImage.node.sourceUrl}
@@ -52,6 +56,7 @@ export default async function BlogsPage() {
                 className="blog-image"
               />
             )}
+
             <div className="cont-text">
               <h2 className="blog-title">{post.title}</h2>
               <div
