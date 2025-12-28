@@ -48,8 +48,8 @@ export async function generateMetadata({ params }) {
 
 
 
-async function fetchPostBySlug({ params }) {
-  const slug = params?.slug;
+async function fetchPostBySlug(slug) {
+
   if (!slug) return null;
 
   const res = await fetch(process.env.WP_GRAPHQL_URL, {
