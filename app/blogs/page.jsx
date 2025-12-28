@@ -10,16 +10,18 @@ async function fetchPosts() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       query: `
-        AllPosts {
-          nodes {
-            title
-            slug
-            uri
-            excerpt
-            featuredImage {
-              node {
-                sourceUrl
-                altText
+        query AllPosts {
+          posts(first: 20) {
+            nodes {
+              title
+              slug
+              uri
+              excerpt
+              featuredImage {
+                node {
+                  sourceUrl
+                  altText
+                }
               }
             }
           }
