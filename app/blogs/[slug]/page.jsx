@@ -42,92 +42,80 @@ export async function generateMetadata({ params }) {
 async function fetchPostBySlug(slug) {
   if (!slug) return null;
 
-  try {
-    const res = await fetch(process.env.WP_GRAPHQL_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `
-          query PostBySlug($slug: ID!) {
-            post(id: $slug, idType: SLUG) {
-              title
-              content
-              date
-              featuredImage {
-                node {
-                  sourceUrl
-                  altText
-                }
+  const res = await fetch(process.env.WP_GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        query PostBySlug($slug: ID!) {
+          post(id: $slug, idType: SLUG) {
+            title
+            content
+            date
+            featuredImage {
+              node {
+                sourceUrl
+                altText
               }
-              author {
-                node {
-                  name
-                }
+            }
+            author {
+              node {
+                name
               }
             }
           }
-        `,
-        variables: { slug },
-      }),
-      next: { revalidate: 60 },
-    });
+        }
+      `,
+      variables: { slug },
+    }),
+    next: { revalidate: 60 },
+  });
 
-    if (!res.ok) {
-      console.error("HTTP error:", res.status);
-      return null;
-    }
+  if (!res.ok) return null;
 
-    const json = await res.json();
+  const json = await res.json();
+  if (json.errors) return null;
 
-    if (json.errors) {
-      console.error("GraphQL error:", json.errors);
-      return null;
-    }
-
-    return json?.data?.post ?? null;
-  } catch (error) {
-    console.error("Fetch post failed:", error);
-    return null;
-  }
+  return json.data.post;
 }
 
 
 
+
 export default async function BlogPostPage({ params }) {
-  const post = await fetchPostBySlug(params.slug);
+  const { slug } = params;
+
+  const post = await fetchPostBySlug(slug);
 
   if (!post) {
-    return <p>Post no encontrado</p>;
+    return <p>Artículo no encontrado</p>;
   }
 
   return (
-    <article className="post-container">
-      <h1 className="post-title">{post.title}</h1>
+    <article>
+      <h1>{post.title}</h1>
 
       {post.featuredImage?.node && (
         <img
           src={post.featuredImage.node.sourceUrl}
           alt={post.featuredImage.node.altText}
-          className="post-image"
         />
       )}
 
       <div
-        className="post-content"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 
-      <footer className="post-footer">
-        <p>
-          Publicado por <strong>{post.author.node.name}</strong> el{" "}
-          {new Date(post.date).toLocaleDateString()}
-        </p>
-      </footer>
+      <p>
+        Publicado por {post.author.node.name} —{" "}
+        {new Date(post.date).toLocaleDateString()}
+      </p>
     </article>
   );
 }
+
 
 
 
