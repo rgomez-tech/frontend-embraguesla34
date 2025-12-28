@@ -2,12 +2,54 @@ import React from 'react';
 import './post.css';
 import { getPostSEO } from "@/lib/getPostSEO";
 
+export async function generateMetadata({ params }) {
+  const slug = params?.slug;
+
+  if (!slug) {
+    return {
+      title: "Artículo no encontrado",
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const postSEO = await getPostSEO(params.slug);
+
+  if (!postSEO) {
+    return {
+      title: "Artículo no encontrado",
+      description: "El contenido no está disponible",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const seo = postSEO.seo || {};
+
+  return {
+    title: seo.title || postSEO.title,
+    description: seo.metaDesc || "",
+    alternates: {
+      canonical: seo.canonical,
+    },
+    openGraph: {
+      title: seo.opengraphTitle || postSEO.title,
+      description: seo.opengraphDescription || "",
+      url: seo.canonical,
+      type: "article",
+      images: seo.opengraphImage?.sourceUrl
+        ? [{ url: seo.opengraphImage.sourceUrl, width: 1200, height: 630 }]
+        : undefined,
+    },
+  };
+}
 
 
 
 
-
-async function fetchPostBySlug(slug) {
+async function fetchPostBySlug({ params }) {
+  const slug = params?.slug;
   if (!slug) return null;
 
   const res = await fetch(process.env.WP_GRAPHQL_URL, {
