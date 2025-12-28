@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
 async function fetchPostBySlug(slug) {
   if (!slug) return null;
 
-  const res = await fetch(process.env.WP_GRAPHQL_URL, {
+  const res = await fetch('https://tech.embraguesla34.com/graphql', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
