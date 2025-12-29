@@ -6,14 +6,11 @@ export async function generateMetadata({ params }) {
   const slug = params?.slug;
 
   if (!slug) {
-    return {
-      title: "Artículo no encontrado SEO",
-      robots: { index: false, follow: false },
-    };
+    return <p>SLUG no encontrado SEO</p>;
   }
 
   const post = await getPostSEO(slug);
-  if (!post) return { title: "Artículo no encontrado SEO", robots: { index: false, follow: false } };
+  if (!post) return <p>Artículo no encontrado</p>;
 
   const seo = post.seo || {};
 
@@ -41,14 +38,11 @@ export default async function BlogPostPage({ params }) {
   const slug = params?.slug;
 
     if (!slug) {
-    return {
-      title: "Artículo no encontrado POST",
-      robots: { index: false, follow: false },
-    };
+    return <p>SLUG no encontrado EN BLOG</p>;
   }
 
   const post = await getPostSEO(slug);
-  if (!post) return { title: "Artículo no encontrado POST", robots: { index: false, follow: false } };
+  if (!post) return <p>Artículo no encontrado</p>;
 
   return (
     <article>
