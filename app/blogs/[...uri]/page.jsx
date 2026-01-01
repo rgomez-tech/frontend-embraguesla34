@@ -6,7 +6,7 @@ export async function generateMetadata({ params }) {
   const post = await getPostByUri(uri);
 
   if (!post) {
-    return { title: "Artículo no encontrado" };
+    return <p>Artículo no encontrado EN SEO</p>;
   }
 
   return {
@@ -25,7 +25,7 @@ export default async function BlogPostPage({ params }) {
   const post = await getPostByUri(uri);
 
   if (!post) {
-    return <p>Artículo no encontrado</p>;
+    return <p>Artículo no encontrado EN BLOG</p>;
   }
 
   return (
