@@ -2,7 +2,7 @@ import React from 'react';
 import './post.css';
 import { getPostSEO } from "@/lib/getPostSEO";
 
-export default async function BlogPostPage2(props) {
+export default async function BlogPostPage(props) {
   return (
     <pre>{JSON.stringify(props, null, 2)}</pre>
   );
@@ -40,39 +40,7 @@ export async function generateMetadata({ params }) {
 
 
 
-export default async function BlogPostPage({ params }) {
-  const slug = params?.slug;
 
-    if (!slug) {
-    return <p>SLUG no encontrado EN BLOG</p>;
-  }
-
-  const post = await getPostSEO(slug);
-  if (!post) return <p>Artículo no encontrado</p>;
-
-  return (
-    <article>
-      <h1>{post.title}</h1>
-
-      {post.featuredImage?.node && (
-        <img
-          src={post.featuredImage.node.sourceUrl}
-          alt={post.featuredImage.node.altText}
-        />
-      )}
-
-      <div
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
-
-      <p>
-        Publicado por{" "}
-        {post.author?.node?.name || "Embragues La 34"} —{" "}
-        {new Date(post.date).toLocaleDateString()}
-      </p>
-    </article>
-  );
-}
 
 
 
