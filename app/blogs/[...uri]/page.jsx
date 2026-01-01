@@ -1,19 +1,6 @@
 import { getPostByUri } from "@/lib/getPostByUri";
 import './post.css';
 
-export async function generateMetadata({ params }) {
-  const uri = "/" + params.uri.join("/") + "/";
-  const post = await getPostByUri(uri);
-
-  if (!post) {
-    return <p>Artículo no encontrado EN SEO</p>;
-  }
-
-  return {
-    title: post.title,
-  };
-}
-
 
 export default async function BlogPostPage({ params }) {
   if (!params?.uri) {
