@@ -2,6 +2,12 @@ import React from 'react';
 import './post.css';
 import { getPostSEO } from "@/lib/getPostSEO";
 
+export default async function BlogPostPage2(props) {
+  return (
+    <pre>{JSON.stringify(props, null, 2)}</pre>
+  );
+}
+
 export async function generateMetadata({ params }) {
   const slug = params?.slug;
 
