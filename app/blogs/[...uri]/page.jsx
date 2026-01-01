@@ -7,7 +7,9 @@ export default async function BlogPostPage({ params }) {
     return <p>URI no encontrada</p>;
   }
 
-  const uri = "/" + params.uri.join("/") + "/";
+  const uriArray = params?.uri;
+
+  const uri = "/" + uriArray.join("/") + "/";
 
   const post = await getPostByUri(uri);
 
