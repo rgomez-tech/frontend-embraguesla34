@@ -1,20 +1,21 @@
 import { getPostByUri } from "@/lib/getPostByUri";
 import './post.css';
 
+export default async function getPostByUri({ params }) {
+  const uriArray = params?.uri;
 
-export default async function BlogPostPage({ params }) {
-  if (!params?.uri) {
+  if (!uriArray || !Array.isArray(uriArray)) {
     return <p>URI no encontrada</p>;
   }
 
-  const uriArray = params?.uri;
-
   const uri = "/" + uriArray.join("/") + "/";
 
-  const post = await getPostByUri(uri);
+  console.log("URI final:", uri);
+
+  const post = await fetchPostByUri(uri);
 
   if (!post) {
-    return <p>Artículo no encontrado EN BLOG</p>;
+    return <p>Artículo no encontrado</p>;
   }
 
   return (
@@ -24,7 +25,7 @@ export default async function BlogPostPage({ params }) {
       {post.featuredImage?.node && (
         <img
           src={post.featuredImage.node.sourceUrl}
-          alt={post.featuredImage.node.altText || post.title}
+          alt={post.featuredImage.node.altText}
         />
       )}
 
@@ -38,3 +39,4 @@ export default async function BlogPostPage({ params }) {
     </article>
   );
 }
+
