@@ -1,7 +1,7 @@
 import { getPostByUri } from "@/lib/getPostByUri";
 import './post.css';
 
-export default async function getPostByUri({ params }) {
+export default async function BlogPostPage({ params }) {
   const uriArray = params?.uri;
 
   if (!uriArray || !Array.isArray(uriArray)) {
