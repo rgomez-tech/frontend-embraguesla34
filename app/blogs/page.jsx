@@ -15,7 +15,6 @@ async function fetchPosts() {
             nodes {
               title
               slug
-              uri
               excerpt
               featuredImage {
                 node {
