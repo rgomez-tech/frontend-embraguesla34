@@ -9,6 +9,7 @@
   line-height: 56px;
   margin-bottom: 20px;
   margin-top: 20px;
+  color: #333;
 }
 
 .blog-post img {
@@ -26,15 +27,17 @@
 .contenido h2{
   font-size: 38px;
   line-height: 46px;
-  color: black;
+  color: #333;
   margin-top: 50px;
+  font-family: 'Roboto Condensed';  
 }
 
 .contenido h3{
   font-size: 32px;
   line-height: 40px;
-  color: black;
+  color: #333;
   margin-top: 50px;
+  font-family: 'Roboto Condensed';  
 }
 
 .contenido li{

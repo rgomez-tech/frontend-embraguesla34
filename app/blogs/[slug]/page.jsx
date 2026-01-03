@@ -1,5 +1,31 @@
 import React from "react";
 import './post.css';
+import { getPostBySlug } from "@/lib/getPostBySlug";
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
+  if (!post) return {};
+
+  const seo = post.seo;
+
+  return {
+    title: seo.title,
+    description: seo.metaDesc,
+    alternates: {
+      canonical: seo.canonical,
+    },
+    openGraph: {
+      title: seo.opengraphTitle || seo.title,
+      description: seo.opengraphDescription || seo.metaDesc,
+      images: seo.opengraphImage?.sourceUrl
+        ? [{ url: seo.opengraphImage.sourceUrl }]
+        : [],
+    },
+  };
+}
+
 
 async function fetchPostBySlug(slug) {
   const res = await fetch(process.env.WP_GRAPHQL_URL, {
