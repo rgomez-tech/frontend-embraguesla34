@@ -122,6 +122,10 @@
   border-radius: 8px;
 }
 
+.content-map{
+  width: 100%;
+}
+
 .map{
   width: 95%;
   height: 500px;
