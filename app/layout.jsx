@@ -4,10 +4,26 @@ import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
 import Script from "next/script";
 import MetaPixel from "@/components/MetaPixel";
+import { getGlobalSEO } from "@/lib/getGlobalSEO";
 
-export const metadata = {
-  metadataBase: new URL("https://www.embraguesla34.com"),
-};
+export async function generateMetadata() {
+  const data = await getGlobalSEO();
+
+  if (!data) return {};
+
+  return {
+    title: data.generalSettings.title,
+    description: data.generalSettings.description,
+    openGraph: {
+      title: data.generalSettings.title,
+      description: data.generalSettings.description,
+      images: data.seo.schema.companyLogo?.sourceUrl
+        ? [{ url: data.seo.schema.companyLogo.sourceUrl }]
+        : [],
+    },
+  };
+}
+
 
 
 
