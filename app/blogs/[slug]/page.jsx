@@ -1,7 +1,12 @@
+import React from "react";
+import './post.css';
+
 async function fetchPostBySlug(slug) {
   const res = await fetch(process.env.WP_GRAPHQL_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify({
       query: `
         query PostBySlug($slug: ID!) {
@@ -28,15 +33,19 @@ async function fetchPostBySlug(slug) {
     next: { revalidate: 60 },
   });
 
+  if (!res.ok) return null;
+
   const json = await res.json();
-  return json?.data?.post || null;
+  if (json.errors) return null;
+
+  return json.data.post;
 }
 
 export default async function BlogPostPage({ params }) {
-  const slug = params?.slug;
+  const { slug } = await params;
 
   if (!slug) {
-    return <p>Slug no encontrado</p>;
+    return <p>Artículo no encontrado</p>;
   }
 
   const post = await fetchPostBySlug(slug);
@@ -46,23 +55,25 @@ export default async function BlogPostPage({ params }) {
   }
 
   return (
-    <article>
-      <h1>{post.title}</h1>
-
+    <article className="blog-post">
       {post.featuredImage?.node && (
         <img
           src={post.featuredImage.node.sourceUrl}
-          alt={post.featuredImage.node.altText}
+          alt={post.featuredImage.node.altText || post.title}
         />
       )}
+      <h1>{post.title}</h1>
+       
+      <div className="contenido" dangerouslySetInnerHTML={{ __html: post.content }} />
 
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-
-      <p>
+      <p className="post-footer">
         Publicado por{" "}
         {post.author?.node?.name || "Embragues La 34"} —{" "}
-        {new Date(post.date).toLocaleDateString()}
+        {new Date(post.date).toLocaleDateString("es-CO")}
       </p>
     </article>
   );
 }
+
+
+
