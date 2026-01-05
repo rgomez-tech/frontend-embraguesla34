@@ -4,7 +4,10 @@ import "./servicios.css";
 export default function ServiciosPage() {
   return (
     <main className="servicios">
-      <h1 className="servicios__title">Nuestros Servicios</h1>
+      <div className="contenedor-titulo">
+        <h1 className="servicios__title">Nuestros Servicios</h1>
+      </div>
+      
 
       <section className="servicios__grid">
         <div className="servicios__box">

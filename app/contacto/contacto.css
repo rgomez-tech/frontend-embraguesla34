@@ -3,11 +3,23 @@
   padding: 60px 0px;  
 }
 
+.contenedor-titulo{
+  width: 100%;
+  height: 350px;
+  background-image: url('../../public/img/banner2.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
 .contacto__title {
   text-align: center;
   font-size: 70px;
-  margin-bottom: 40px;
-  margin-top: 80px;
+  color: whitesmoke;
+  text-shadow: 2px 2px #00011e;
 }
 
 .contacto__grid{

@@ -42,7 +42,9 @@ export default async function BlogsPage() {
 
   return (
     <div className="blogs-container">
-      <h1 className="blogs-title">Información de interés</h1>
+      <div className='contenedor-titulo'>
+        <h1 className="blogs-title">Información de interés</h1>
+      </div>
       <div className="blogs-grid">
         {posts.map(post => (
           <Link

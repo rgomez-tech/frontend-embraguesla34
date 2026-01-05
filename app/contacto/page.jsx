@@ -85,7 +85,10 @@ export default function ContactForm() {
 
   return (
     <main className="contacto">
-      <h1 className="contacto__title">Contáctanos</h1>
+      <div className="contenedor-titulo">
+        <h1 className="contacto__title">Contáctanos</h1>
+      </div>
+      
 
       <section className="contacto__grid">
         <div className="contacto__box">
