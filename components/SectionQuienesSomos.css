@@ -1,6 +1,6 @@
 .seccion-home{
     max-width: 1320px; 
-    margin: auto; 
+    margin: 80px auto; 
 }
 .two-cols {
   display: flex;
@@ -58,9 +58,12 @@
 
 /* MOBILE */
 @media (max-width: 768px) {
+  .seccion-home{
+      margin: 0px auto; 
+  }
   .two-cols {
     flex-direction: column;
-    padding: 40px 40px;
+    padding: 0px 15px;
   }
 
   .two-cols__content,
@@ -78,7 +81,7 @@
     }
   .dos-cols {
     flex-direction: column-reverse;
-    padding: 40px 40px;
+    padding: 0px 15px;
   }
 
   .dos-cols__content,

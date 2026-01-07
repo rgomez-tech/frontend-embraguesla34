@@ -6,7 +6,7 @@ import "./Model3DViewer.css";
 export default function SectionModelos3D() {
   return (
     <section >
-      <div className="two-cols">
+      <div className="two-columnas1">
         <div className="column">
           <h3>Ingeniería y precisión en cada componente</h3>
           <p>El clutch es una pieza crítica del sistema de transmisión.
@@ -27,7 +27,7 @@ export default function SectionModelos3D() {
           <p>Interactúa con el modelo 3D</p>
         </div>
       </div>
-      <div className="two-cols">
+      <div className="two-columnas2">
         <div className="column">
           <model-viewer
             src="/model3d/clutch_disco.glb"
@@ -41,7 +41,7 @@ export default function SectionModelos3D() {
           <p>Interactúa con el modelo 3D</p>
         </div>        
         <div className="column">        
-        <h3>Alto desempeño para trabajo pesado</h3>
+          <h3>Alto desempeño para trabajo pesado</h3>
           <p>Nuestros sistemas de embrague están diseñados para soportar altas cargas, uso continuo y condiciones exigentes.
             Reparamos, empastamos y ajustamos componentes para garantizar acoplamiento preciso, mayor durabilidad y respuesta confiable en cada cambio.
             Trabajamos con materiales certificados y procesos técnicos que prolongan la vida útil del clutch y reducen costos de mantenimiento.</p>
