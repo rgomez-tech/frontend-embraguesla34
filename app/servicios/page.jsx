@@ -12,7 +12,7 @@ export default function ServiciosPage() {
       <section className="servicios__grid">
         <div className="servicios__box">
             <div className="cont-img1">
-                <img src="/img/servicio1.webp" alt="Reparación de embragues" />
+                <img className="inverted-radius" src="/img/servicio1.webp" alt="Reparación de embragues" />
             </div>
             <div className="cont-text">
                 <h2>Venta y reparación de embragues</h2>
@@ -22,19 +22,19 @@ export default function ServiciosPage() {
         </div>
 
         <div className="servicios__box2">
-            <div className="cont-text">
+            <div className="cont-text2">
                 <h2>Remachamos discos</h2>
                 <hr />
                 <p>En embragues la 34 remachamos toda clase de discos de clutch en pasta de asbesto o tacos de bronce.</p>
             </div>            
             <div className="cont-img2">
-                <img src="/img/servicio2.webp" alt="Reparación de embragues" />
+                <img className="inverted-radius-2" src="/img/servicio2.webp" alt="Reparación de embragues" />
             </div> 
         </div>
 
         <div className="servicios__box">
             <div className="cont-img1">
-                <img src="/img/servicio3.webp" alt="Reparación de embragues" />
+                <img className="inverted-radius" src="/img/servicio3.webp" alt="Reparación de embragues" />
             </div>
             <div className="cont-text">
                 <h2>Rectificamos volantes</h2>
