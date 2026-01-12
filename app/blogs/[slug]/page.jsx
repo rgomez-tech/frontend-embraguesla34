@@ -10,6 +10,10 @@ export async function generateMetadata({ params }) {
     return {title: 'Embragues La 34',};
   }
 
+  const ogImage =
+  post.seo?.opengraphImage?.sourceUrl ||
+  post.featuredImage?.node?.sourceUrl;
+
   return {
     title: post.seo?.title || post.title,
     description: post.seo?.metaDesc || '',
@@ -22,10 +26,10 @@ export async function generateMetadata({ params }) {
       url: post.seo?.canonical || `https://embraguesla34.com/${slug}`,
       siteName: 'Embragues La 34',
       type: 'article',
-      images: post.featuredImage?.node?.sourceUrl
+      images: ogImage
         ? [
             {
-              url: post.featuredImage.node.sourceUrl,
+              url: ogImage,
               width: 1200,
               height: 630,
             },
