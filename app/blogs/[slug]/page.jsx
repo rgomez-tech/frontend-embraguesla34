@@ -10,11 +10,7 @@ export async function generateMetadata({ params }) {
     return {title: 'Embragues La 34',};
   }
 
-  const ogImage =
-    post.seo?.opengraphImage?.sourceUrl?.replace(
-      'https://tech.embraguesla34.com',
-      'https://embraguesla34.com'
-    );
+  const ogImage = `https://www.embraguesla34.com/og/${slug}.jpg`;
 
 
   return {
