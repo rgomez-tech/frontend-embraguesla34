@@ -6,25 +6,31 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
-  if (!post) return {};
-
-  const seo = post.seo;
+  if (!post) {
+    return {title: 'Embragues La 34',};
+  }
 
   return {
-    title: post.seo?.title,
-    description: post.seo?.metaDesc,
+    title: post.seo?.title || post.title,
+    description: post.seo?.metaDesc || '',
+    alternates: {
+      canonical: post.seo?.canonical || `https://embraguesla34.com/${slug}`,
+    },
     openGraph: {
-      title: post.seo?.title,
-      description: post.seo?.metaDesc,
-      url: `https://embraguesla34.com/${params.slug}`,
-      images: [
-        {
-          url: post.og_image,
-          width: 1200,
-          height: 630,
-        },
-      ],
+      title: post.seo?.title || post.title,
+      description: post.seo?.metaDesc || '',
+      url: post.seo?.canonical || `https://embraguesla34.com/${slug}`,
+      siteName: 'Embragues La 34',
       type: 'article',
+      images: post.featuredImage?.node?.sourceUrl
+        ? [
+            {
+              url: post.featuredImage.node.sourceUrl,
+              width: 1200,
+              height: 630,
+            },
+          ]
+        : [],
     },
   };
 }
