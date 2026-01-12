@@ -11,8 +11,11 @@ export async function generateMetadata({ params }) {
   }
 
   const ogImage =
-  post.seo?.opengraphImage?.sourceUrl ||
-  post.featuredImage?.node?.sourceUrl;
+    post.seo?.opengraphImage?.sourceUrl?.replace(
+      'https://tech.embraguesla34.com',
+      'https://embraguesla34.com'
+    );
+
 
   return {
     title: post.seo?.title || post.title,
