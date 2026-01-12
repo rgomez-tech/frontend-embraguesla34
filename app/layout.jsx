@@ -4,16 +4,21 @@ import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
 import Script from "next/script";
 import MetaPixel from "@/components/MetaPixel";
+import { headers } from "next/headers";
 import { getGlobalSEO } from "@/lib/getGlobalSEO";
 
 export async function generateMetadata() {
   const data = await getGlobalSEO();
-
   if (!data) return {};
 
   return {
     title: data.generalSettings.title,
     description: data.generalSettings.description,
+
+    alternates: {
+      canonical: "https://embraguesla34.com/",
+    },
+
     openGraph: {
       title: data.generalSettings.title,
       description: data.generalSettings.description,
@@ -23,6 +28,7 @@ export async function generateMetadata() {
     },
   };
 }
+
 
 
 

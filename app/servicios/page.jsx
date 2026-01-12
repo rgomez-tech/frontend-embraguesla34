@@ -1,4 +1,21 @@
 import "./servicios.css";
+import { getPostBySlug } from "@/lib/getPostBySlug";
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const page = await getPostBySlug(slug);
+
+  if (!page) return {};
+
+  return {
+    title: page.seo?.title,
+    description: page.seo?.metaDesc,
+    alternates: {
+      canonical: page.seo?.canonical,
+    },
+  };
+}
+
 
 
 export default function ServiciosPage() {
