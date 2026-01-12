@@ -3,7 +3,12 @@ import './post.css';
 import { getPostBySlug } from "@/lib/getPostBySlug";
 
 export async function generateMetadata({ params }) {
-  const post = await getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
+  if (!post) return {};
+
+  const seo = post.seo;
 
   return {
     title: post.seo?.title,
@@ -23,7 +28,6 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-
 
 
 async function fetchPostBySlug(slug) {
