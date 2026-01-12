@@ -36,6 +36,12 @@ export async function generateMetadata({ params }) {
           ]
         : [],
     },
+      other: {
+      'og:image': ogImage,
+      'og:image:secure_url': ogImage,
+      'og:image:width': '1200',
+      'og:image:height': '630',
+    },
   };
 }
 
