@@ -3,28 +3,27 @@ import './post.css';
 import { getPostBySlug } from "@/lib/getPostBySlug";
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
-
-  if (!post) return {};
-
-  const seo = post.seo;
+  const post = await getPostBySlug(params.slug);
 
   return {
-    title: seo.title,
-    description: seo.metaDesc,
-    alternates: {
-      canonical: seo.canonical,
-    },
+    title: post.seo?.title,
+    description: post.seo?.metaDesc,
     openGraph: {
-      title: seo.opengraphTitle || seo.title,
-      description: seo.opengraphDescription || seo.metaDesc,
-      images: seo.opengraphImage?.sourceUrl
-        ? [{ url: seo.opengraphImage.sourceUrl }]
-        : [],
+      title: post.seo?.title,
+      description: post.seo?.metaDesc,
+      url: `https://embraguesla34.com/${params.slug}`,
+      images: [
+        {
+          url: post.og_image,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: 'article',
     },
   };
 }
+
 
 
 async function fetchPostBySlug(slug) {
