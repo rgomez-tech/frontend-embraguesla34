@@ -2,9 +2,6 @@ import "./globals.css";
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import { getMenu } from "../lib/getMenu"; // asegúrate de tener este archivo
-import Script from "next/script";
-import MetaPixel from "@/components/MetaPixel";
-import { headers } from "next/headers";
 import { getGlobalSEO } from "@/lib/getGlobalSEO";
 
 export async function generateMetadata() {
@@ -30,10 +27,6 @@ export async function generateMetadata() {
 }
 
 
-
-
-
-
 export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }) {
@@ -53,9 +46,8 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="es">
       <head>
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
+        {/* Meta Pixel */}
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -66,15 +58,22 @@ export default async function RootLayout({ children }) {
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
+              fbq('init', '1491903375215121'); 
               fbq('track', 'PageView');
             `,
           }}
         />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1491903375215121&ev=PageView&noscript=1"
+          />
+        </noscript>
         <meta name="facebook-domain-verification" content="3miemlvu0q8pad6c7dej2zb32b9gop" />
       </head>
       <body>
-        <MetaPixel />
         {items.length > 0 ? (
           <Menu items={items} />
         ) : (
