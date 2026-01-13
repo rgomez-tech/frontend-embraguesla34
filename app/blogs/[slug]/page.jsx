@@ -34,6 +34,7 @@ export async function generateMetadata({ params }) {
             },
           ]
         : [],
+      fbAppId: '1491903375215121',  
     },
       other: {
       'og:image': ogImage,
