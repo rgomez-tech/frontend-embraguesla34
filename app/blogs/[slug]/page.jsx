@@ -40,6 +40,7 @@ export async function generateMetadata({ params }) {
       'og:image:secure_url': ogImage,
       'og:image:width': '1200',
       'og:image:height': '630',
+      'fb:app_id': '1491903375215121',
     },
   };
 }
