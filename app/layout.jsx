@@ -72,6 +72,7 @@ export default async function RootLayout({ children }) {
           />
         </noscript>
         <meta name="facebook-domain-verification" content="3miemlvu0q8pad6c7dej2zb32b9gop" />
+        <meta property="fb:app_id" content="1491903375215121" />
       </head>
       <body>
         {items.length > 0 ? (
