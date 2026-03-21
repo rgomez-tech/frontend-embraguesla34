@@ -72,6 +72,21 @@ export default async function RootLayout({ children }) {
           />
         </noscript>
         <meta name="facebook-domain-verification" content="3miemlvu0q8pad6c7dej2zb32b9gop" />
+
+          <script 
+            async 
+            src="https://www.googletagmanager.com" 
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-HPTYG1P6TW');
+              `,
+            }}
+          />
       </head>
       <body>
         {items.length > 0 ? (
